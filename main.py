@@ -57,7 +57,31 @@ df = get_data()
 st.title("Doctor Malpractice")
 st.subheader("Find out if your New Jersey doctor has had any state medical board actions taken against them")
 
-option_arr = df["Name"].unique().tolist()
+st.markdown(
+    """
+    *This AI sources information from the NJ Divison of Consumer Affairs. Its data store reflects the state of that website as of April 14th, 2024.*
+    *As a Large Language Model, it is vulnerable to hallucinations, so you should consider verifying information given*
+    > the information provided here is provided as is and without guarantees
+    """
+)
+
+expander = st.expander("See Instructions")
+expander.write(
+    """
+    1. Select a doctor from the drop down menu.
+       * If your doctor does not appear, then they have NOT had any NJ State Medical Board actions posted onto the NJ Division of Consumer Affairs website as of 04/14/2024
+    2. Decide which actions you want the AI to take:
+       * AI can translate the document into Spanish
+       * AI can summarize the document so that it is in more accessible language
+       * It can both translate into Spanish and summarize the document.
+    3. To check the information, click 'See original text' to see the data given to the AI and a link to the PDF on the NJ Divison of Consumer Affairs website
+    
+    > This bot was partially inspired by the [John Oliver Video on State Medical Boards](https://youtu.be/jVIYbgVks7E?feature=shared)
+    """
+)
+
+option_arr = df["Name"].unique().tolist().sort("Name", ascending=True)
+# option_arr = []
 doctor = st.selectbox(placeholder="Choose an option", label="Choose your doctor's name", options=option_arr)
 translate = st.checkbox(label="Translate to Spanish", value=False)
 summarize = st.checkbox(label="Summarize", value=False)
