@@ -2,9 +2,9 @@ import pandas as pd
 import streamlit as st
 import anthropic
 
-client = anthropic.Anthropic(
-    api_key=st.secrets["CLAUDE_SECRET_KEY"]
-)
+# client = anthropic.Anthropic(
+#     api_key=st.secrets["CLAUDE_SECRET_KEY"]
+# )
 
 
 st.markdown(
@@ -80,8 +80,8 @@ expander.write(
     """
 )
 
-option_arr = df["Name"].unique().tolist().sort()
-# option_arr = []
+option_arr = df["Name"].unique().tolist()
+option_arr.sort()
 doctor = st.selectbox(placeholder="Choose an option", label="Choose your doctor's name", options=option_arr)
 translate = st.checkbox(label="Translate to Spanish", value=False)
 summarize = st.checkbox(label="Summarize", value=False)
