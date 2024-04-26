@@ -2,9 +2,9 @@ import pandas as pd
 import streamlit as st
 import anthropic
 
-# client = anthropic.Anthropic(
-#     api_key=st.secrets["CLAUDE_SECRET_KEY"]
-# )
+client = anthropic.Anthropic(
+    api_key=st.secrets["CLAUDE_SECRET_KEY"]
+)
 
 
 st.markdown(
