@@ -80,7 +80,7 @@ expander.write(
     """
 )
 
-option_arr = df["Name"].unique().sort_values("Name", ascending=True).tolist()
+option_arr = df["Name"].unique().tolist().sort()
 # option_arr = []
 doctor = st.selectbox(placeholder="Choose an option", label="Choose your doctor's name", options=option_arr)
 translate = st.checkbox(label="Translate to Spanish", value=False)
